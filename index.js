@@ -202,6 +202,24 @@ async function run() {
             res.json(result);
         });
 
+        //UPDATE API for update status
+        app.put('/orders/update/:id', async (req, res) => {
+            const id = req.params.id;
+            // console.log(id)
+            const updatedStatus = req.body.orderStatus;
+
+            const filter = { _id: ObjectId(id) };
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
+                    orderStatus: updatedStatus
+                },
+            };
+            const result = await ordersCollection.updateOne(filter, updateDoc, options);
+            res.json(result);
+
+        });
+
 
 
 
@@ -251,6 +269,9 @@ async function run() {
 
             res.json({ error, status });
         });
+
+
+
 
 
 
