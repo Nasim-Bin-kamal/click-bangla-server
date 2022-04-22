@@ -271,12 +271,6 @@ async function run() {
         });
 
 
-
-
-
-
-
-
     }
     finally {
         // await client.close();
@@ -286,7 +280,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-    res.send("Hello!! From cLICK BANGLA SERVER");
+    res.send("Hello!! From CLICK BANGLA SERVER");
 });
 
 app.listen(port, () => {
