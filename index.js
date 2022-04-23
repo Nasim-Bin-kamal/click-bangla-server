@@ -221,8 +221,6 @@ async function run() {
         });
 
 
-
-
         //stripe gateway  checkout
         app.post("/checkout", async (req, res) => {
             console.log("Request:", req.body);
