@@ -16,12 +16,12 @@ app.use(cors());
 app.use(express.json());
 
 
-//initialize firebase
-const serviceAccount = require("./click-bangla-firebase-adminsdk.json");
+// //initialize firebase
+// const serviceAccount = require("./click-bangla-firebase-adminsdk.json");
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
+// admin.initializeApp({
+//     credential: admin.credential.cert(serviceAccount)
+// });
 
 
 const port = process.env.PORT || 5000;
