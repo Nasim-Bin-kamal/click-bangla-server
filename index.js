@@ -3,7 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const ObjectId = require('mongodb').ObjectId;
-const admin = require("firebase-admin");
+// const admin = require("firebase-admin");
 
 // const stripe = require("stripe")("sk_test_51JvoX2HPRrHHjKcv6nK6C6YyzniFyJYtwUIrqIYHFANfYKegUD4oE45rMwhWn7r0DcM9Nf0MqvxRCmIkwnPRzsde00efp5vNUW");
 // const uuid = require("uuid").v4;
@@ -33,22 +33,22 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 
 
-//token authorization function
-async function verifyToken(req, res, next) {
-    if (req.headers?.authorization?.startsWith('Bearer ')) {
-        const token = req.headers?.authorization?.split(' ')[1];
+// //token authorization function
+// async function verifyToken(req, res, next) {
+//     if (req.headers?.authorization?.startsWith('Bearer ')) {
+//         const token = req.headers?.authorization?.split(' ')[1];
 
-        try {
-            const decodedUser = await admin.auth().verifyIdToken(token);
-            req.decodedEmail = decodedUser.email;
-        }
-        catch {
+//         try {
+//             const decodedUser = await admin.auth().verifyIdToken(token);
+//             req.decodedEmail = decodedUser.email;
+//         }
+//         catch {
 
-        }
-    }
+//         }
+//     }
 
-    next();
-}
+//     next();
+// }
 
 
 async function run() {
