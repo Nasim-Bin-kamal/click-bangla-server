@@ -51,7 +51,6 @@ async function verifyToken(req, res, next) {
 }
 
 
-
 async function run() {
     try {
         await client.connect();
