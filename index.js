@@ -5,8 +5,8 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const ObjectId = require('mongodb').ObjectId;
 const admin = require("firebase-admin");
 
-const stripe = require("stripe")("sk_test_51JvoX2HPRrHHjKcv6nK6C6YyzniFyJYtwUIrqIYHFANfYKegUD4oE45rMwhWn7r0DcM9Nf0MqvxRCmIkwnPRzsde00efp5vNUW");
-const uuid = require("uuid").v4;
+// const stripe = require("stripe")("sk_test_51JvoX2HPRrHHjKcv6nK6C6YyzniFyJYtwUIrqIYHFANfYKegUD4oE45rMwhWn7r0DcM9Nf0MqvxRCmIkwnPRzsde00efp5vNUW");
+// const uuid = require("uuid").v4;
 
 
 const app = express();
@@ -220,52 +220,52 @@ async function run() {
         });
 
 
-        //stripe gateway  checkout
-        app.post("/checkout", async (req, res) => {
-            console.log("Request:", req.body);
+        // //stripe gateway  checkout
+        // app.post("/checkout", async (req, res) => {
+        //     console.log("Request:", req.body);
 
-            let error;
-            let status;
-            try {
-                const { product, token } = req.body;
+        //     let error;
+        //     let status;
+        //     try {
+        //         const { product, token } = req.body;
 
-                const customer = await stripe.customers.create({
-                    email: token.email,
-                    source: token.id,
-                });
+        //         const customer = await stripe.customers.create({
+        //             email: token.email,
+        //             source: token.id,
+        //         });
 
-                const idempotency_key = uuid();
-                const charge = await stripe.charges.create(
-                    {
-                        amount: subtotal * 100,
-                        currency: "BDT",
-                        customer: customer.id,
-                        receipt_email: token.email,
-                        description: `Purchased the ${product.name}`,
-                        shipping: {
-                            name: token.card.name,
-                            address: {
-                                line1: token.card.address_line1,
-                                line2: token.card.address_line2,
-                                city: token.card.address_city,
-                                country: token.card.address_country,
-                                postal_code: token.card.address_zip,
-                            },
-                        },
-                    },
-                    {
-                        idempotency_key,
-                    }
-                );
-                console.log("Charge:", { charge });
-                status = "success";
-            } catch (error) {
-                console.error("Error:", error);
-                status = "failure";
-            }
+        //         const idempotency_key = uuid();
+        //         const charge = await stripe.charges.create(
+        //             {
+        //                 amount: subtotal * 100,
+        //                 currency: "BDT",
+        //                 customer: customer.id,
+        //                 receipt_email: token.email,
+        //                 description: `Purchased the ${product.name}`,
+        //                 shipping: {
+        //                     name: token.card.name,
+        //                     address: {
+        //                         line1: token.card.address_line1,
+        //                         line2: token.card.address_line2,
+        //                         city: token.card.address_city,
+        //                         country: token.card.address_country,
+        //                         postal_code: token.card.address_zip,
+        //                     },
+        //                 },
+        //             },
+        //             {
+        //                 idempotency_key,
+        //             }
+        //         );
+        //         console.log("Charge:", { charge });
+        //         status = "success";
+        //     } catch (error) {
+        //         console.error("Error:", error);
+        //         status = "failure";
+        //     }
 
-            res.json({ error, status });
-        });
+        //     res.json({ error, status });
+        // });
 
 
     }
