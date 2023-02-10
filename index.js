@@ -5,9 +5,9 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 const ObjectId = require("mongodb").ObjectId;
 const admin = require("firebase-admin");
 
-const stripe = require("stripe")(
-  "sk_test_51JvoX2HPRrHHjKcv6nK6C6YyzniFyJYtwUIrqIYHFANfYKegUD4oE45rMwhWn7r0DcM9Nf0MqvxRCmIkwnPRzsde00efp5vNUW"
-);
+// const stripe = require("stripe")(
+//   "sk_test_51JvoX2HPRrHHjKcv6nK6C6YyzniFyJYtwUIrqIYHFANfYKegUD4oE45rMwhWn7r0DcM9Nf0MqvxRCmIkwnPRzsde00efp5vNUW"
+// );
 const uuid = require("uuid").v4;
 
 const app = express();
@@ -284,7 +284,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("Hello!! From CLICK BANGLA SERVER");
+  res.send("Hello!! From CLICK BANGLA Server");
 });
 
 app.listen(port, () => {
