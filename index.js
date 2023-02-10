@@ -5,9 +5,9 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 const ObjectId = require("mongodb").ObjectId;
 const admin = require("firebase-admin");
 
-// const stripe = require("stripe")(
-//   "sk_test_51JvoX2HPRrHHjKcv6nK6C6YyzniFyJYtwUIrqIYHFANfYKegUD4oE45rMwhWn7r0DcM9Nf0MqvxRCmIkwnPRzsde00efp5vNUW"
-// );
+const stripe = require("stripe")(
+  "sk_test_51JvoX2HPRrHHjKcv6nK6C6YyzniFyJYtwUIrqIYHFANfYKegUD4oE45rMwhWn7r0DcM9Nf0MqvxRCmIkwnPRzsde00efp5vNUW"
+);
 const uuid = require("uuid").v4;
 
 const app = express();
@@ -25,8 +25,7 @@ admin.initializeApp({
 
 const port = process.env.PORT || 5000;
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.u0u6n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.u0u6n.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
