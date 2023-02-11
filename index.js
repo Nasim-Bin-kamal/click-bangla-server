@@ -5,10 +5,10 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 const ObjectId = require("mongodb").ObjectId;
 const admin = require("firebase-admin");
 
-const stripe = require("stripe")(
-  "sk_test_51JvoX2HPRrHHjKcv6nK6C6YyzniFyJYtwUIrqIYHFANfYKegUD4oE45rMwhWn7r0DcM9Nf0MqvxRCmIkwnPRzsde00efp5vNUW"
-);
-const uuid = require("uuid").v4;
+// const stripe = require("stripe")(
+//   "sk_test_51JvoX2HPRrHHjKcv6nK6C6YyzniFyJYtwUIrqIYHFANfYKegUD4oE45rMwhWn7r0DcM9Nf0MqvxRCmIkwnPRzsde00efp5vNUW"
+// );
+// const uuid = require("uuid").v4;
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 //initialize firebase
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+// const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
